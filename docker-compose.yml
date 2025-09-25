@@ -14,10 +14,10 @@ services:
     depends_on:
       - php
     networks:
-      - app-network
+      - noip-network
 
   php:
-    image: php:8.2-fpm
+    build: ./php
     container_name: php-fpm
     volumes:
       - ./php:/var/www/html
@@ -27,7 +27,7 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     networks:
-      - app-network
+      - noip-network
 
   postgres:
     image: postgres:15-alpine
@@ -39,7 +39,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
-      - app-network
+      - noip-network
 
   portainer:
     image: portainer/portainer-ce:latest
@@ -50,10 +50,10 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
     networks:
-      - app-network
+      - noip-network
 
 networks:
-  app-network:
+  noip-network:
     driver: bridge
 
 volumes:
