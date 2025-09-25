@@ -17,14 +17,4 @@ docker-compose.yml: манифест докера для поднятия кон
 
 Запуск осуществляется из корня проекта, где лежит docker-compose.yml с помощью команды **docker-compose up -d**
 
-
-Для установки SSL при наличии домена:
-
-Заменить **yourdomain.com** на домен в:
-   - docker-compose.yml
-   - nginx/nginx.conf
-     
-Запустите Certbot для получения сертификата:
-**sudo docker-compose run --rm certbot certonly --webroot --webroot-path=/var/lib/letsencrypt --email your-email@example.com --agree-tos --no-eff-email -d yourdomain.com**
-
-Перезапустить nginx docker-compose restart nginx
+portainer открывается на стандартном порту 9000
